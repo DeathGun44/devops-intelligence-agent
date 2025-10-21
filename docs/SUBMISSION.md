@@ -208,7 +208,6 @@ All dependencies are standard open-source libraries:
 
 ---
 
-**Thank you for considering our submission!** 🚀
-
-We believe this project demonstrates the power of AWS Bedrock for building production-ready agentic AI systems that solve real-world problems.
+**Thank you for considering my submission!** 🚀
+I believe this project demonstrates the power of AWS Bedrock for building production-ready agentic AI systems that solve real-world problems.
 
