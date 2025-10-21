@@ -8,7 +8,7 @@ The DevOps Intelligence Agent is a sophisticated AI-powered system built on AWS 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                           USER INTERFACE                             │
+│                           USER INTERFACE                            │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │   React Frontend (CloudFront/S3)                               │ │
 │  │   - Modern UI with Tailwind CSS                                │ │
@@ -20,7 +20,7 @@ The DevOps Intelligence Agent is a sophisticated AI-powered system built on AWS 
                                     │ HTTPS/REST API
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                         API LAYER (FastAPI)                          │
+│                         API LAYER (FastAPI)                         │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │   API Gateway / Load Balancer                                  │ │
 │  │   - Rate limiting                                              │ │
@@ -31,16 +31,16 @@ The DevOps Intelligence Agent is a sophisticated AI-powered system built on AWS 
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      AGENT ORCHESTRATION LAYER                       │
+│                      AGENT ORCHESTRATION LAYER                      │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │              DevOps Agent (Core Logic)                         │ │
-│  │  ┌──────────────────────────────────────────────────────────┐ │ │
-│  │  │  1. Message Reception & Context Loading                  │ │ │
-│  │  │  2. Reasoning Engine (AWS Bedrock)                       │ │ │
-│  │  │  3. Action Planning                                      │ │ │
-│  │  │  4. Tool Execution                                       │ │ │
-│  │  │  5. Response Generation                                  │ │ │
-│  │  └──────────────────────────────────────────────────────────┘ │ │
+│  │  ┌──────────────────────────────────────────────────────────┐  │ │
+│  │  │  1. Message Reception & Context Loading                  │  │ │
+│  │  │  2. Reasoning Engine (AWS Bedrock)                       │  │ │
+│  │  │  3. Action Planning                                      │  │ │
+│  │  │  4. Tool Execution                                       │  │ │
+│  │  │  5. Response Generation                                  │  │ │
+│  │  └──────────────────────────────────────────────────────────┘  │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────┘
            │                    │                    │
