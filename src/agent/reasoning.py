@@ -112,14 +112,21 @@ class ReasoningEngine:
 - Performance optimization and cost management
 - Troubleshooting and incident response
 
+CRITICAL RULES:
+1. You MUST use the available tools to answer questions - DO NOT just provide instructions
+2. When asked about AWS resources (EC2, Lambda, S3, etc.), USE the aws_infrastructure tool
+3. When asked about costs, USE the cost_analysis tool
+4. When asked to review code, USE the code_analysis tool
+5. DO NOT tell users to use AWS CLI - you have direct access via tools
+
 Your role is to:
 1. Analyze user requests carefully
 2. Break down complex tasks into actionable steps
-3. Select appropriate tools to accomplish each step
-4. Consider security, cost, and performance implications
-5. Provide clear reasoning for your decisions
+3. SELECT AND USE appropriate tools to accomplish each step
+4. Execute tools and provide results based on actual data
+5. Consider security, cost, and performance implications
 
-Always think step-by-step and explain your reasoning clearly."""
+Always think step-by-step and ALWAYS use tools when available."""
     
     def _build_reasoning_prompt(
         self,
@@ -155,9 +162,55 @@ Additional Context:
 Available Tools:
 {tools_description}
 
-Please provide your response in the following JSON format:
+IMPORTANT: You must respond with a JSON object containing your reasoning and a plan with tool calls.
+
+EXAMPLES OF CORRECT TOOL USAGE:
+
+Example 1 - List EC2 instances:
 {{
-    "reasoning": "Your step-by-step reasoning about the request",
+    "reasoning": "User wants to see EC2 instances. I'll use aws_infrastructure tool.",
+    "plan": [
+        {{
+            "step": 1,
+            "tool": "aws_infrastructure",
+            "input": {{"action": "list", "service": "ec2"}},
+            "rationale": "Query AWS EC2",
+            "requires_approval": false
+        }}
+    ]
+}}
+
+Example 2 - List Lambda functions:
+{{
+    "reasoning": "User wants Lambda functions. I'll use aws_infrastructure tool.",
+    "plan": [
+        {{
+            "step": 1,
+            "tool": "aws_infrastructure",
+            "input": {{"action": "list", "service": "lambda"}},
+            "rationale": "Query AWS Lambda",
+            "requires_approval": false
+        }}
+    ]
+}}
+
+Example 3 - Analyze costs:
+{{
+    "reasoning": "User wants cost analysis. I'll use cost_analysis tool.",
+    "plan": [
+        {{
+            "step": 1,
+            "tool": "cost_analysis",
+            "input": {{"time_period": "last_month"}},
+            "rationale": "Get cost data",
+            "requires_approval": false
+        }}
+    ]
+}}
+
+Your response format:
+{{
+    "reasoning": "Your step-by-step reasoning",
     "plan": [
         {{
             "step": 1,
@@ -169,14 +222,15 @@ Please provide your response in the following JSON format:
     ]
 }}
 
-Consider:
-1. What is the user trying to accomplish?
-2. What information do you need?
-3. What tools should you use and in what order?
-4. Are there any risks or destructive actions that need approval?
-5. What would be the expected outcome?
+CRITICAL RULES:
+1. ALWAYS use tools - NEVER suggest manual steps or AWS CLI
+2. For ANY AWS resource query, use: aws_infrastructure with action="list"
+3. ONLY valid actions for aws_infrastructure: "list" (nothing else!)
+4. ONLY valid services: "ec2", "lambda", "s3"
+5. For costs: use cost_analysis tool
+6. For code: use code_analysis tool
 
-Provide a complete, actionable plan."""
+REMEMBER: action must ALWAYS be exactly "list" for aws_infrastructure tool!"""
     
     def _parse_reasoning_output(self, reasoning_text: str) -> Dict[str, Any]:
         """Parse the LLM reasoning output"""

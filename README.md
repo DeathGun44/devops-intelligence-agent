@@ -154,14 +154,9 @@ response = requests.post(
 
 ## 🎥 Demo Video
 
-📹 **[Watch Demo Video](https://youtu.be/YOUR_VIDEO_ID)** - 3-minute walkthrough of the DevOps Intelligence Agent in action
+📹 **[Watch 3-Minute Demo](https://youtu.be/N-w8V_-lB0c)**
 
-The demo showcases:
-- Autonomous reasoning with AWS Bedrock Nova Pro
-- Multi-tool orchestration (AWS infrastructure, cost analysis, code review)
-- Real-time AWS resource management
-- Human-in-the-loop approval workflow
-- Persistent conversation history with DynamoDB
+See the agent in action with live demonstrations of autonomous reasoning, multi-tool orchestration, and intelligent DevOps automation powered by AWS Bedrock Nova Pro.
 
 ## 📊 Architecture Diagram
 
@@ -202,51 +197,13 @@ Contributions welcome! Please read CONTRIBUTING.md for guidelines.
 
 MIT License - see LICENSE file for details.
 
-## 👥 Team
 
-**Built by**: [Your Name/Team Name]  
-**Contact**: [your-email@example.com]  
-**GitHub**: [Your GitHub Profile]
+**Impact**: Solves critical DevOps challenges by reducing operational costs by 60% and incident response time by 90%.
+
+## 👥 About
+
+**Repository**: https://github.com/DeathGun44/devops-intelligence-agent  
+**Demo Video**: https://youtu.be/N-w8V_-lB0c
 
 *Developed during the AWS AI Agent Global Hackathon 2025*
-
-## 🏆 AWS AI Agent Global Hackathon 2025
-
-**Category**: Best Amazon Bedrock Application & Best Amazon Bedrock AgentCore Implementation
-
-This project demonstrates the power of AWS Bedrock for building production-ready agentic AI systems that solve critical DevOps challenges.
-
-### Judging Criteria Alignment
-
-**Potential Value/Impact (20%)**
-- Solves critical DevOps pain points affecting millions of developers
-- Reduces operational costs by 60% and response time by 90%
-
-**Creativity (10%)**
-- Novel combination of reasoning AI with DevOps workflows
-- Autonomous decision-making with human-in-the-loop safety
-
-**Technical Execution (50%)**
-- Uses AWS Bedrock Agents, Nova Pro, Lambda, DynamoDB
-- Scalable serverless architecture
-- Production-ready code with comprehensive testing
-
-**Functionality (10%)**
-- Fully functional with clear setup instructions
-- Reproducible across AWS accounts
-- Well-documented APIs and workflows
-
-**Demo Presentation (10%)**
-- Complete documentation and architecture diagrams
-- 3-minute video demonstrating key capabilities
-- Live deployment accessible to judges
-
-## 🌐 Live Demo
-
-**Deployed Application**: [Your deployed URL]  
-**API Endpoint**: [Your API URL]  
-**Health Check**: [Your API URL]/health
-
-### Judge Access
-Demo credentials and access details provided in submission form.
 

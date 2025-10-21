@@ -91,25 +91,27 @@ class AWSInfrastructureTool(BaseTool):
         return {
             "action": {
                 "type": "string",
-                "description": "Action to perform: list, describe, create, update, delete",
-                "required": True
+                "description": "Action to perform: 'list' (to list/describe resources)",
+                "required": True,
+                "example": "list"
             },
             "service": {
                 "type": "string",
-                "description": "AWS service: ec2, lambda, s3, rds, etc.",
-                "required": True
+                "description": "AWS service: 'ec2' (for EC2 instances), 'lambda' (for Lambda functions), 's3' (for S3 buckets)",
+                "required": True,
+                "example": "ec2"
             },
             "resource_id": {
                 "type": "string",
-                "description": "Resource identifier (optional)",
+                "description": "Specific resource ID (optional, for describe operations)",
                 "required": False
             }
         }
     
     async def execute(self, tool_input: Dict[str, Any]) -> Dict[str, Any]:
         """Execute AWS infrastructure operation"""
-        action = tool_input.get('action')
-        service = tool_input.get('service')
+        action = tool_input.get('action', '').lower()
+        service = tool_input.get('service', '').lower()
         
         if not settings.ENABLE_AWS_ACTIONS:
             return {
@@ -118,6 +120,10 @@ class AWSInfrastructureTool(BaseTool):
             }
         
         try:
+            # Normalize action names
+            if action in ['list', 'list_instances', 'describe', 'get']:
+                action = 'list'
+            
             if service == 'ec2' and action == 'list':
                 return await self._list_ec2_instances()
             elif service == 'lambda' and action == 'list':
@@ -127,7 +133,7 @@ class AWSInfrastructureTool(BaseTool):
             else:
                 return {
                     "success": False,
-                    "message": f"Unsupported action {action} for service {service}"
+                    "message": f"Unsupported action '{action}' for service '{service}'. Try: action='list', service='ec2'"
                 }
         except Exception as e:
             logger.error(f"Error executing AWS tool: {e}")
